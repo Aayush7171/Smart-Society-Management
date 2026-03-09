@@ -22,7 +22,11 @@ const db = new Database(dbPath);
 
 app.use(cors());
 app.use(express.json());
+const express = require("express");
 
+app.get("/", (req, res) => {
+  res.send("Smart Society Backend API is running 🚀");
+});
 function mapUser(row) {
   if (!row) {
     return null;
