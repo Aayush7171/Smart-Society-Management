@@ -1,0 +1,297 @@
+.app-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 28px;
+  background: linear-gradient(180deg, #183153 0%, #0e1d31 100%);
+  color: #f5f7fb;
+}
+
+.sidebar h2,
+.content h1,
+.panel h2,
+.panel h3,
+.login-card h1 {
+  margin: 0;
+}
+
+.sidebar-copy {
+  margin-top: 12px;
+  color: #c4d5eb;
+  line-height: 1.6;
+}
+
+.sidebar-copy span {
+  text-transform: capitalize;
+}
+
+.nav-list {
+  display: grid;
+  gap: 10px;
+  margin: 24px 0;
+}
+
+.nav-item,
+.ghost-button,
+.primary-button {
+  border: 0;
+  border-radius: 14px;
+  padding: 12px 16px;
+  font: inherit;
+}
+
+.nav-item {
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  text-align: left;
+}
+
+.nav-item.active {
+  background: #f4b942;
+  color: #18212c;
+}
+
+.content {
+  padding: 28px;
+}
+
+.topbar,
+.section-header,
+.record-header,
+.action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.panel,
+.stat-card {
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(20, 38, 61, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(17, 29, 45, 0.08);
+}
+
+.panel {
+  padding: 24px;
+  margin-top: 22px;
+}
+
+.stats-grid,
+.overview-grid,
+.list-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.stats-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.overview-grid,
+.list-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.stat-card {
+  padding: 22px;
+}
+
+.stat-card p,
+.mini-panel p,
+.subtle,
+.section-header p,
+.record-card p,
+.notice-card p,
+.table-wrap,
+.login-card p {
+  color: #5e6c7d;
+}
+
+.stat-card strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 2rem;
+  color: #14263d;
+  text-transform: capitalize;
+}
+
+.mini-panel {
+  padding: 18px;
+  border-radius: 18px;
+  background: #f7f2e8;
+}
+
+.form-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.split {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.full-span {
+  grid-column: 1 / -1;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  color: #213246;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccd6e2;
+  border-radius: 14px;
+  background: #fff;
+  color: #12263a;
+  font: inherit;
+}
+
+.primary-button {
+  background: #14263d;
+  color: #f8fafc;
+}
+
+.ghost-button {
+  background: #e9eef4;
+  color: #14263d;
+}
+
+.action-row {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-pill.approved,
+.status-pill.paid,
+.status-pill.resolved {
+  background: #d7f0de;
+  color: #166534;
+}
+
+.status-pill.pending,
+.status-pill.open {
+  background: #fef1c7;
+  color: #a16207;
+}
+
+.status-pill.rejected {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.status-pill.in-progress {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.record-card {
+  padding: 20px;
+  border: 1px solid rgba(20, 38, 61, 0.08);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e3eaf2;
+  text-align: left;
+}
+
+.banner,
+.error-text {
+  color: #b42318;
+}
+
+.login-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: min(1100px, 100%);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.hero-copy {
+  padding: 34px;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at top left, rgba(244, 185, 66, 0.55), transparent 35%),
+    linear-gradient(135deg, #143c5d 0%, #0d1d30 80%);
+  color: #f8fafc;
+}
+
+.hero-copy .subtle {
+  color: #d9e5f2;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  color: #f4b942;
+}
+
+.demo-users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 920px) {
+  .app-shell,
+  .login-card {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    gap: 24px;
+  }
+}
