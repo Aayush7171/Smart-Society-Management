@@ -230,9 +230,9 @@ function App() {
         <div className="login-card">
           <div className="hero-copy">
             <p className="eyebrow">Society Management System</p>
-            <h1>Residential operations, members, security and payments in one place.</h1>
+            <h1>Complete management system for residential communities.</h1>
             <p className="subtle">
-              Complete management system for residential communities with visitor approvals, maintenance tracking, complaints and notices.
+              Manage visitors, maintenance, complaints, notices and resident records in one place.
             </p>
           </div>
 
@@ -240,7 +240,7 @@ function App() {
             <div className="section-header">
               <div>
                 <h2>Sign In</h2>
-                <p>Select a demo account to login.</p>
+                <p>Select an account to login.</p>
               </div>
             </div>
 
@@ -394,7 +394,7 @@ function App() {
               <p>{memberProfile.building_name}</p>
             </div>
             <div>
-              <h3>Resident Type</h3>
+              <h3>Type</h3>
               <p>{memberProfile.owner_type}</p>
             </div>
             <div>
@@ -414,7 +414,7 @@ function App() {
               <div className="section-header">
                 <div>
                   <h2>Add Member</h2>
-                  <p>Register new member with default password.</p>
+                  <p>Create new resident account.</p>
                 </div>
               </div>
 
@@ -472,7 +472,7 @@ function App() {
                 <div className="section-header">
                   <div>
                     <h2>Register Visitor</h2>
-                    <p>Log new visitor entry.</p>
+                    <p>Record visitor arrival.</p>
                   </div>
                 </div>
 
@@ -577,7 +577,7 @@ function App() {
                 <div className="section-header">
                   <div>
                     <h2>Create Maintenance Bill</h2>
-                    <p>Add charges and bills for residents.</p>
+                    <p>Create maintenance bills.</p>
                   </div>
                 </div>
 
@@ -631,7 +631,7 @@ function App() {
 
                     <p>{formatCurrency(item.amount)}</p>
                     <p>Due: {formatDate(item.due_date)}</p>
-                    <p>{item.notes || 'No notes'}</p>
+                    <p>{item.notes || '-'}</p>
 
                     {item.status !== 'Paid' ? (
                       <button
@@ -759,7 +759,7 @@ function App() {
                 <div className="section-header">
                   <div>
                     <h2>Publish Notice</h2>
-                    <p>Send announcements to residents.</p>
+                    <p>Post announcements.</p>
                   </div>
                 </div>
 
