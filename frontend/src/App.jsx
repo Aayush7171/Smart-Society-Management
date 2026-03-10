@@ -467,7 +467,7 @@ function App() {
 
         {activeSection === 'visitors' ? (
           <>
-            {(user.role === 'admin' || user.role === 'guard') ? (
+            {user.role === 'guard' ? (
               <section className="panel">
                 <div className="section-header">
                   <div>
