@@ -122,7 +122,7 @@ function App() {
 
   async function loadSession() {
     try {
-      const session = await request('/auth/me', {}, token);
+      const session = await request('/api/auth/me', {}, token);
       setUser(session.user);
     } catch (_error) {
       logout();
@@ -134,14 +134,14 @@ function App() {
     setError('');
 
     try {
-      const calls = [request('/dashboard/summary', {}, token)];
+      const calls = [request('/api/dashboard/summary', {}, token)];
       const role = user.role;
 
-      calls.push(role === 'admin' || role === 'member' ? request('/members', {}, token) : Promise.resolve([]));
-      calls.push(request('/visitors', {}, token));
-      calls.push(role === 'admin' || role === 'member' ? request('/maintenance', {}, token) : Promise.resolve([]));
-      calls.push(role === 'admin' || role === 'member' ? request('/complaints', {}, token) : Promise.resolve([]));
-      calls.push(request('/notices', {}, token));
+      calls.push(role === 'admin' || role === 'member' ? request('/api/members', {}, token) : Promise.resolve([]));
+      calls.push(request('/api/visitors', {}, token));
+      calls.push(role === 'admin' || role === 'member' ? request('/api/maintenance', {}, token) : Promise.resolve([]));
+      calls.push(role === 'admin' || role === 'member' ? request('/api/complaints', {}, token) : Promise.resolve([]));
+      calls.push(request('/api/notices', {}, token));
 
       const [summaryResponse, members, visitors, maintenance, complaints, notices] = await Promise.all(calls);
 
@@ -160,7 +160,7 @@ function App() {
     setError('');
 
     try {
-      const result = await request('/auth/login', {
+      const result = await request('/api/auth/login', {
         method: 'POST',
         body: JSON.stringify(forms.login),
       });
@@ -451,7 +451,7 @@ function App() {
               <button
                 className="primary-button"
                 disabled={busy}
-                onClick={() => submitAction('/members', 'POST', forms.member, 'member')}
+                onClick={() => submitAction('/api/members', 'POST', forms.member, 'member')}
                 type="button"
               >
                 Add Member
@@ -499,7 +499,7 @@ function App() {
                 <button
                   className="primary-button"
                   disabled={busy}
-                  onClick={() => submitAction('/visitors', 'POST', forms.visitor, 'visitor')}
+                  onClick={() => submitAction('/api/visitors', 'POST', forms.visitor, 'visitor')}
                   type="button"
                 >
                   Save Visitor Entry
@@ -537,7 +537,7 @@ function App() {
                           <button
                             className="primary-button"
                             disabled={busy}
-                            onClick={() => submitAction(`/visitors/${visitor.id}/status`, 'PATCH', { status: 'Approved' })}
+                            onClick={() => submitAction(`/api/visitors/${visitor.id}/status`, 'PATCH', { status: 'Approved' })}
                             type="button"
                           >
                             Approve
@@ -545,7 +545,7 @@ function App() {
                           <button
                             className="ghost-button"
                             disabled={busy}
-                            onClick={() => submitAction(`/visitors/${visitor.id}/status`, 'PATCH', { status: 'Rejected' })}
+                            onClick={() => submitAction(`/api/visitors/${visitor.id}/status`, 'PATCH', { status: 'Rejected' })}
                             type="button"
                           >
                             Reject
@@ -557,7 +557,7 @@ function App() {
                         <button
                           className="ghost-button"
                           disabled={busy}
-                          onClick={() => submitAction(`/visitors/${visitor.id}/exit`, 'PATCH')}
+                          onClick={() => submitAction(`/api/visitors/${visitor.id}/exit`, 'PATCH')}
                           type="button"
                         >
                           Mark Exit
@@ -604,7 +604,7 @@ function App() {
                 <button
                   className="primary-button"
                   disabled={busy}
-                  onClick={() => submitAction('/maintenance', 'POST', forms.maintenance, 'maintenance')}
+                  onClick={() => submitAction('/api/maintenance', 'POST', forms.maintenance, 'maintenance')}
                   type="button"
                 >
                   Create Bill
@@ -638,7 +638,7 @@ function App() {
                       <button
                         className="primary-button"
                         disabled={busy}
-                        onClick={() => submitAction(`/maintenance/${item.id}/pay`, 'PATCH')}
+                        onClick={() => submitAction(`/api/maintenance/${item.id}/pay`, 'PATCH')}
                         type="button"
                       >
                         Mark Paid
@@ -707,7 +707,7 @@ function App() {
               <button
                 className="primary-button"
                 disabled={busy}
-                onClick={() => submitAction('/complaints', 'POST', forms.complaint, 'complaint')}
+                onClick={() => submitAction('/api/complaints', 'POST', forms.complaint, 'complaint')}
                 type="button"
               >
                 Submit Complaint
@@ -738,7 +738,7 @@ function App() {
                             className="ghost-button"
                             disabled={busy || item.status === status}
                             key={status}
-                            onClick={() => submitAction(`/complaints/${item.id}/status`, 'PATCH', { status })}
+                            onClick={() => submitAction(`/api/complaints/${item.id}/status`, 'PATCH', { status })}
                             type="button"
                           >
                             {status}
@@ -797,7 +797,7 @@ function App() {
                 <button
                   className="primary-button"
                   disabled={busy}
-                  onClick={() => submitAction('/notices', 'POST', forms.notice, 'notice')}
+                  onClick={() => submitAction('/api/notices', 'POST', forms.notice, 'notice')}
                   type="button"
                 >
                   Publish Notice
