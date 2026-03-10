@@ -830,7 +830,7 @@ function DataTable({ title, columns, rows }) {
       <div className="section-header">
         <div>
           <h2>{title}</h2>
-          <p>{rows.length} record{rows.length !== 1 ? 's' : ''}</p>
+          <p>{rows.length} record</p>
         </div>
       </div>
       <div className="table-wrap">
