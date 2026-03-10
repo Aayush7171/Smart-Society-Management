@@ -8,10 +8,10 @@
   status = 200
 
 [context.production.environment]
-  VITE_API_URL = "https://your-render-api-url.onrender.com"
+  VITE_API_URL = "https://smart-society-management-qd7s.onrender.com"
 
 [context.deploy-preview.environment]
-  VITE_API_URL = "https://your-render-api-url.onrender.com"
+  VITE_API_URL = "https://smart-society-management-qd7s.onrender.com"
 
 [context.branch-deploy.environment]
-  VITE_API_URL = "https://your-render-api-url.onrender.com"
+  VITE_API_URL = "https://smart-society-management-qd7s.onrender.com"
