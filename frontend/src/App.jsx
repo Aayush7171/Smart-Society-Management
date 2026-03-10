@@ -463,7 +463,7 @@ function App() {
               title="Member directory"
             />
           </>
-        ) : null}s
+        ) : null}
 
         {activeSection === 'visitors' ? (
           <>
