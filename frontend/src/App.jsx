@@ -232,15 +232,15 @@ function App() {
             <p className="eyebrow">Society Management System</p>
             <h1>Residential operations, members, security and payments in one place.</h1>
             <p className="subtle">
-              Scope derived from your SRS: member records, visitor approvals, maintenance, complaints and notices.
+              Complete management system for residential communities with visitor approvals, maintenance tracking, complaints and notices.
             </p>
           </div>
 
           <form className="panel form-grid" onSubmit={handleLogin}>
             <div className="section-header">
               <div>
-                <h2>Sign in</h2>
-                <p>Use the seeded accounts below to test each role.</p>
+                <h2>Sign In</h2>
+                <p>Select a demo account to login.</p>
               </div>
             </div>
 
@@ -285,7 +285,7 @@ function App() {
             {error ? <p className="error-text">{error}</p> : null}
 
             <button className="primary-button" disabled={busy} type="submit">
-              {busy ? 'Signing in...' : 'Login'}
+              {busy ? 'Signing In...' : 'Sign In'}
             </button>
           </form>
         </div>
@@ -331,7 +331,6 @@ function App() {
         <header className="topbar">
           <div>
             <h1>{sections.find((section) => section.id === activeSection)?.label}</h1>
-            <p className="subtle">Backend API: Express plus SQLite with seeded role accounts.</p>
           </div>
           <button className="ghost-button" disabled={busy} onClick={loadDashboard} type="button">
             Refresh
@@ -354,26 +353,26 @@ function App() {
             <section className="panel">
               <div className="section-header">
                 <div>
-                  <h2>Current operating picture</h2>
-                  <p>Live summary of the modules implemented from the SRS.</p>
+                  <h2>Dashboard Summary</h2>
+                  <p>Key metrics at a glance.</p>
                 </div>
               </div>
               <div className="overview-grid">
                 <div className="mini-panel">
                   <h3>Visitors</h3>
-                  <p>{data.visitors.length} records available</p>
+                  <p>{data.visitors.length} records</p>
                 </div>
                 <div className="mini-panel">
                   <h3>Maintenance</h3>
-                  <p>{data.maintenance.length} bills tracked</p>
+                  <p>{data.maintenance.length} bills</p>
                 </div>
                 <div className="mini-panel">
                   <h3>Complaints</h3>
-                  <p>{data.complaints.length} issues logged</p>
+                  <p>{data.complaints.length} issues</p>
                 </div>
                 <div className="mini-panel">
                   <h3>Notices</h3>
-                  <p>{data.notices.length} announcements published</p>
+                  <p>{data.notices.length} announcements</p>
                 </div>
               </div>
             </section>
@@ -414,8 +413,8 @@ function App() {
             <section className="panel">
               <div className="section-header">
                 <div>
-                  <h2>Add member</h2>
-                  <p>Creates the member record and a default login with password `password123`.</p>
+                  <h2>Add Member</h2>
+                  <p>Register new member with default password.</p>
                 </div>
               </div>
 
@@ -464,7 +463,7 @@ function App() {
               title="Member directory"
             />
           </>
-        ) : null}
+        ) : null}s
 
         {activeSection === 'visitors' ? (
           <>
@@ -472,8 +471,8 @@ function App() {
               <section className="panel">
                 <div className="section-header">
                   <div>
-                    <h2>Log visitor</h2>
-                    <p>Guard and admin can create new visitor entries.</p>
+                    <h2>Register Visitor</h2>
+                    <p>Log new visitor entry.</p>
                   </div>
                 </div>
 
@@ -502,7 +501,7 @@ function App() {
                   onClick={() => submitAction('/api/visitors', 'POST', forms.visitor, 'visitor')}
                   type="button"
                 >
-                  Save Visitor Entry
+                  Save Entry
                 </button>
               </section>
             ) : null}
@@ -510,8 +509,8 @@ function App() {
             <section className="panel">
               <div className="section-header">
                 <div>
-                  <h2>Visitor register</h2>
-                  <p>Members can approve or reject their own flat visitors. Guard can mark exits.</p>
+                  <h2>Visitor Records</h2>
+                  <p>{user.role === 'member' ? 'Approve or reject visitors for your flat.' : 'Manage visitor entries and approvals.'}</p>
                 </div>
               </div>
               <div className="list-grid">
@@ -573,12 +572,12 @@ function App() {
 
         {activeSection === 'maintenance' ? (
           <>
-            {user.role === 'admin' ? (
+            {(user.role === 'admin') ? (
               <section className="panel">
                 <div className="section-header">
                   <div>
-                    <h2>Create maintenance bill</h2>
-                    <p>Admin can assign monthly charges and utility bills by flat.</p>
+                    <h2>Create Maintenance Bill</h2>
+                    <p>Add charges and bills for residents.</p>
                   </div>
                 </div>
 
@@ -615,8 +614,8 @@ function App() {
             <section className="panel">
               <div className="section-header">
                 <div>
-                  <h2>Maintenance ledger</h2>
-                  <p>Members can mark their dues as paid for this demo build.</p>
+                  <h2>Maintenance Ledger</h2>
+                  <p>{user.role === 'member' ? 'View and pay your dues.' : 'Track all maintenance records.'}</p>
                 </div>
               </div>
               <div className="list-grid">
@@ -656,8 +655,8 @@ function App() {
             <section className="panel">
               <div className="section-header">
                 <div>
-                  <h2>Raise complaint</h2>
-                  <p>Members file complaints for their own flats. Admin can also log one manually.</p>
+                  <h2>File Complaint</h2>
+                  <p>{user.role === 'admin' ? 'Create and track complaints.' : 'Report issues in your flat.'}</p>
                 </div>
               </div>
 
@@ -759,8 +758,8 @@ function App() {
               <section className="panel">
                 <div className="section-header">
                   <div>
-                    <h2>Publish notice</h2>
-                    <p>Audience targeting supports All, Members, and Guards.</p>
+                    <h2>Publish Notice</h2>
+                    <p>Send announcements to residents.</p>
                   </div>
                 </div>
 
@@ -811,7 +810,6 @@ function App() {
                   <div className="record-header">
                     <div>
                       <h2>{notice.title}</h2>
-                      <p>{notice.audience}</p>
                     </div>
                     <span>{formatDate(notice.created_at)}</span>
                   </div>
@@ -832,7 +830,7 @@ function DataTable({ title, columns, rows }) {
       <div className="section-header">
         <div>
           <h2>{title}</h2>
-          <p>{rows.length} records</p>
+          <p>{rows.length} record{rows.length !== 1 ? 's' : ''}</p>
         </div>
       </div>
       <div className="table-wrap">
